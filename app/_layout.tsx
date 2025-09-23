@@ -6,12 +6,10 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from 'react';
 import SettingsDrawer from '../components/SettingsDrawer';
 
-// --- Definindo os tipos para as props do botão ---
 interface SettingsButtonProps {
   onPress: () => void;
 }
 
-// Componente para o botão de Configurações com tipos aplicados
 const SettingsButton = ({ onPress }: SettingsButtonProps) => {
   return (
     <TouchableOpacity onPress={onPress} style={{ marginRight: 16 }}>
@@ -20,7 +18,6 @@ const SettingsButton = ({ onPress }: SettingsButtonProps) => {
   );
 };
 
-// Componente para o título do Feed
 const FeedTitle = () => {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -40,7 +37,6 @@ export default function RootLayout() {
   const router = useRouter();
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-  // Função para deslogar e fechar o drawer
   const handleLogout = () => {
     setDrawerOpen(false);
     router.replace('/');
@@ -67,13 +63,11 @@ export default function RootLayout() {
             ),
           }}
         >
-          {/* Telas sem header */}
           <Stack.Screen name="splash" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="pages/auth/CadastroScreen" options={{ title: '' }} />
           <Stack.Screen name="pages/auth/login" options={{ title: '' }} />
 
-          {/* Tela de Perfil */}
           <Stack.Screen
             name="pages/profile/index"
             options={{
@@ -89,13 +83,11 @@ export default function RootLayout() {
             }}
           />
 
-          {/* Tela de Feed com animação condicional */}
           <Stack.Screen
             name="pages/feed/feed"
-            options={({ navigation }) => {
+            options={({ navigation }: { navigation: any }) => {
               const state = navigation.getState();
               const routes = state.routes;
-              // Pega a rota anterior no histórico de navegação
               const previousRoute = routes.length > 1 ? routes[routes.length - 2] : null;
               const previousRouteName = previousRoute ? previousRoute.name : null;
 
@@ -104,7 +96,6 @@ export default function RootLayout() {
                 headerBackVisible: false,
                 headerLeft: () => null,
                 headerTitleAlign: 'left',
-                // --- MUDANÇA: Define a animação com base na rota anterior ---
                 animation: previousRouteName === 'pages/profile/index' 
                   ? "slide_from_left" 
                   : "default",

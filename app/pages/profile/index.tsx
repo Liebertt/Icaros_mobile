@@ -73,14 +73,10 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* O HEADER MANUAL FOI REMOVIDO DAQUI.
-        O header agora é controlado pelo _layout.js
-      */}
-
-      {/* Conteúdo principal com margin para a navbar */}
+     
       <View style={styles.contentContainer}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* Capa e foto de perfil */}
+     
           <View style={styles.profileHeader}>
             <Image 
               source={{ uri: userData.coverImage }} 
@@ -97,14 +93,14 @@ const ProfileScreen = () => {
             </View>
           </View>
 
-          {/* Informações do usuário */}
+      
           <View style={styles.userInfo}>
             <Text style={styles.userName}>{userData.name}</Text>
             <Text style={styles.userUsername}>{userData.username}</Text>
             <Text style={styles.userBio}>{userData.bio}</Text>
             <Text style={styles.joinedDate}>Entrou em {userData.joinedDate}</Text>
 
-            {/* Estatísticas */}
+      
             <View style={styles.statsContainer}>
               <View style={styles.statItem}>
                 <Text style={styles.statNumber}>{userData.posts}</Text>
@@ -148,7 +144,7 @@ const ProfileScreen = () => {
         </ScrollView>
       </View>
 
-      {/* Navbar igual ao Feed */}
+      
       <View style={styles.bottomNav}>
         <TouchableOpacity onPress={() => router.push('/pages/feed/feed')} style={styles.navItem}>
           <Ionicons name="home" size={28} color={activeBottom === 'feed' ? "#ECD182" : "#666"} />
@@ -180,9 +176,9 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginBottom: 60, // Espaço para a navbar
+    marginBottom: 60,
   },
-  // ESTILOS DO HEADER MANUAL FORAM REMOVIDOS
+
   profileHeader: {
     position: 'relative',
     marginBottom: 70,

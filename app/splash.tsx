@@ -4,29 +4,24 @@ import { useRouter } from "expo-router";
 
 export default function Splash() {
   const router = useRouter();
-
-  // Animação simples de fade in
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Animação simples de entrada
     Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 1500,
       useNativeDriver: true,
     }).start();
 
-    // Redireciona após um tempo
     const timer = setTimeout(() => {
       router.replace("/");
-    }, 2500); // 2.5 segundos total
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <View style={styles.container}>
-      {/* Logo com animação simples */}
       <Animated.View style={[styles.logoContainer, { opacity: fadeAnim }]}>
         <Image
           source={require("../assets/images/Icaros-branco.png")}
@@ -38,7 +33,6 @@ export default function Splash() {
         <Text style={styles.subtitle}>Conecte-se com grandes artistas</Text>
       </Animated.View>
 
-      {/* Loading simples */}
       <View style={styles.loadingContainer}>
         <View style={styles.loadingDots}>
           <View style={[styles.dot, styles.dot1]} />

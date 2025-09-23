@@ -14,7 +14,7 @@ import { Ionicons, Feather } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
 import * as ImagePicker from 'expo-image-picker';
 
-// --- Tipos para os dados ---
+
 interface User {
   name: string;
   username: string;
@@ -508,7 +508,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 1.5,
   },
-  // --- NOVOS ESTILOS PARA A PRÉ-VISUALIZAÇÃO DA IMAGEM ---
+
   imagePreviewContainer: {
     marginTop: 10,
     position: 'relative',

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRouter } from "expo-router";
-
 import {
   StyleSheet,
   Text,
@@ -19,7 +18,7 @@ export default function LoginScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-    const router = useRouter();
+  const router = useRouter();
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -30,12 +29,8 @@ export default function LoginScreen({ navigation }: any) {
     setLoading(true);
     
     try {
-      
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Login bem-sucedido - redireciona para o perfil
       router.push('/pages/feed/feed');
-      
     } catch (error) {
       Alert.alert('Erro', 'Falha no login. Verifique suas credenciais.');
       console.log(error)
@@ -110,7 +105,6 @@ export default function LoginScreen({ navigation }: any) {
             <Text style={styles.signupText}>Don't have an account? </Text>
             <TouchableOpacity onPress={() => router.push('/pages/auth/CadastroScreen')} disabled={loading}>
               <Text style={styles.signupLink}>Sign up</Text>
-
             </TouchableOpacity>
           </View>
         </View>

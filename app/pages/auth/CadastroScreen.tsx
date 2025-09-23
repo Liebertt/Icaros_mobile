@@ -15,7 +15,6 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons } from '@expo/vector-icons';
 
-// Definindo a interface para os dados do formulário
 interface FormData {
   name: string;
   email: string;
@@ -49,7 +48,6 @@ const CadastroScreen = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Máscaras de formatação
   const applyMask = (value: string, pattern: string): string => {
     let i = 0;
     const v = value.toString().replace(/\D/g, '');
@@ -57,7 +55,6 @@ const CadastroScreen = () => {
   };
 
   const handleChange = (name: keyof FormData, value: string) => {
-    // Aplica máscaras conforme o campo
     let formattedValue = value;
     if (name === 'telephone') {
       formattedValue = applyMask(value, '(##) #####-####');
@@ -86,7 +83,6 @@ const CadastroScreen = () => {
   const validateForm = (): boolean => {
     const newErrors: string[] = [];
 
-    // Validações básicas
     if (!formData.name) newErrors.push('Nome é obrigatório');
     if (!formData.email) newErrors.push('Email é obrigatório');
     if (!formData.password) newErrors.push('Senha é obrigatória');
@@ -94,7 +90,6 @@ const CadastroScreen = () => {
       newErrors.push('As senhas não coincidem');
     }
 
-    // Validações específicas por tipo de usuário
     if ([1, 2].includes(formData.flagUserType)) {
       if (!formData.cpf || formData.cpf.length < 14) {
         newErrors.push('CPF inválido');
@@ -121,7 +116,6 @@ const CadastroScreen = () => {
     }
 
     try {
-      // Simulação do envio dos dados
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
@@ -147,9 +141,7 @@ const CadastroScreen = () => {
           <View style={{ width: 40 }} />
         </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Header personalizado */}
-       
-
+        
         {errors.length > 0 && (
           <View style={styles.errorContainer}>
             {errors.map((error, index) => (
@@ -161,7 +153,6 @@ const CadastroScreen = () => {
         )}
 
         <View style={styles.formContainer}>
-          {/* Dados Básicos */}
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Informações Pessoais</Text>
             
@@ -232,7 +223,6 @@ const CadastroScreen = () => {
             />
           </View>
 
-          {/* Tipo de Usuário */}
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Tipo de Usuário</Text>
             <View style={styles.pickerContainer}>
@@ -248,7 +238,6 @@ const CadastroScreen = () => {
             </View>
           </View>
 
-          {/* Campos específicos por tipo de usuário */}
           {[1, 2].includes(formData.flagUserType) && (
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Informações Adicionais</Text>
