@@ -1,6 +1,6 @@
 # 🎵 Ícaros Mobile
 
-![Ícaros Icon](thiago445/icaros_mobile/Icaros_mobile-dc0445fe0c5f1ec0b578368fa02574022a6ef3a6/assets/images/iconIcaros.png)
+![Ícaros Icon](./assets/images/iconLogo.png)
 
 ## 🌟 Visão Geral do Projeto
 
